@@ -17,6 +17,3 @@ class Graph:
         if father.addOutgoingEdge(edge):
             son.addIncomingEdge(edge)
             self.edges.append(edge)
-
-    #def getNode(self):
-     #   return self.node
