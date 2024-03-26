@@ -1,7 +1,7 @@
-from Edge import Edge
-from Graph import Graph
-from Node import Node
-from Simulator import Simulator
+from simulation.edge import Edge
+from simulation.graph import Graph
+from simulation.node import Node
+from simulation.simulator import Simulator
 
 root = Node('A')
 terminal = Node('T')

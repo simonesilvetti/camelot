@@ -1,6 +1,6 @@
-from Graph import Graph
-from Node import Node
-from Simulator import Simulator
+from simulation.graph import Graph
+from simulation.node import Node
+from simulation.simulator import Simulator
 
 graph = Graph()
 
@@ -9,16 +9,16 @@ B = Node('B')
 C = Node('C')
 D = Node('D')
 
-graph.addNode(A)
-graph.addNode(B)
-graph.addNode(C)
-graph.addNode(D)
+graph.add_node(A)
+graph.add_node(B)
+graph.add_node(C)
+graph.add_node(D)
 
-graph.addEdge(A, A, 0.5)
-graph.addEdge(A, B, 0.5)
-graph.addEdge(B, B, 0.5)
-graph.addEdge(B, C, 0.5)
-graph.addEdge(C, D, 1)
+graph.add_edge(A, A, 0.5)
+graph.add_edge(A, B, 0.5)
+graph.add_edge(B, B, 0.5)
+graph.add_edge(B, C, 0.5)
+graph.add_edge(C, D, 1)
 
 simulator = Simulator(graph)
 
