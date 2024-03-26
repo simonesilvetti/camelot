@@ -6,7 +6,7 @@ from Node import Node
 
 class Simulator:
 
-    def __init__(self,graph=Graph()):
+    def __init__(self,graph):
         self.graph = graph
 
     def addNode(self, name):

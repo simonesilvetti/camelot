@@ -2,7 +2,6 @@ from Graph import Graph
 from Node import Node
 from Simulator import Simulator
 
-
 graph = Graph()
 
 A = Node('A')
