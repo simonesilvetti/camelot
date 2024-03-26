@@ -5,6 +5,9 @@ class Node:
         self.outgoingEdges = []
         self.outgoingProbabilities = 0
 
+    def __eq__(self,other):
+        return self.getName() == other.getName()
+
     def getName(self):
         return self.name
 
@@ -19,3 +22,6 @@ class Node:
             return True
 
         return False
+
+    def getOutGoingEdges(self):
+        return self.outgoingEdges

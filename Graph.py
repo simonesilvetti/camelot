@@ -1,5 +1,6 @@
 from Edge import Edge
 
+
 class Graph:
     def __init__(self):
         self.node = None
