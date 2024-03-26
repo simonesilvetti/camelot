@@ -12,9 +12,6 @@ class Simulator:
     def addNode(self, name):
         self.graph.addNode(Node(name))
 
-    def addTerminal(self, name):
-        self.graph.addTerminal(Node(name))
-
     def addEdge(self, father, son, probability):
         self.graph.addEdge(father, son, probability)
 
@@ -30,10 +27,10 @@ class Simulator:
             if x[i] >= rand:
                 return edges[i].getSon()
 
-    def simulate(self):
-        state = self.graph.getNode()
+    def simulate(self,start):
+        state = start
         print(state.getName())
-        while state != self.graph.getTerminal():
+        while not state.isTerminal():
             state = self.step(state)
             print(state.getName())
         print("simulation ended")

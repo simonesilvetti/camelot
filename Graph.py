@@ -3,15 +3,11 @@ from Edge import Edge
 
 class Graph:
     def __init__(self):
-        self.node = None
-        self.terminal = None
+        self.nodes = []
         self.edges = []
 
     def addNode(self, node):
-        self.node = node
-
-    def addTerminal(self, node):
-        self.terminal = node
+        self.nodes.append(node)
 
     def addEdge(self, father, son, probability):
         edge = Edge(father, son, probability)
@@ -22,8 +18,5 @@ class Graph:
             son.addIncomingEdge(edge)
             self.edges.append(edge)
 
-    def getNode(self):
-        return self.node
-
-    def getTerminal(self):
-        return self.terminal
+    #def getNode(self):
+     #   return self.node

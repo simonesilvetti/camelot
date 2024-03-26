@@ -25,3 +25,6 @@ class Node:
 
     def getOutGoingEdges(self):
         return self.outgoingEdges
+
+    def isTerminal(self):
+        return not self.outgoingEdges
