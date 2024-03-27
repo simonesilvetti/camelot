@@ -1,6 +1,7 @@
 class Node:
-    def __init__(self, name: str):
+    def __init__(self, name: str, mean_time: float = 1.0):
         self.name = name
+        self.mean_time = mean_time
         self.incomingEdges = set()
         self.outgoingEdges = set()
 
@@ -24,3 +25,18 @@ class Node:
 
     def __repr__(self):
         return self.name
+
+    def get_mean_time(self):
+        return self.mean_time
+
+    def addIncomingEdge(self, edge):
+        self.incomingEdges.add(edge)
+
+    def addOutgoingEdge(self, edge):
+        self.outgoingEdges.add(edge)
+
+    def getOutGoingEdges(self):
+        return self.outgoingEdges
+
+    def isTerminal(self):
+        return self.outgoingEdges == set()

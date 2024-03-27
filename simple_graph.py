@@ -15,7 +15,7 @@ simulator = Simulator(graph)
 
 simulator.simulate(root)
 """
-graph = Graph.from_list('A', [('A', 'A', 5), ('A', 'T', 1)])
+graph = Graph.from_list('A', [('A', 'A', 5), ('A', 'T', 5)])
 
 simulator = Simulator(graph)
 simulator.add_observer(FileObserver('output/simple.csv'))
