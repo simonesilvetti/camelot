@@ -5,13 +5,11 @@ from simulation.observer import Observer
 
 
 class Simulator:
-    
     observer = Observer()
 
     def __init__(self, graph: Graph):
-        self.graph = graph
         self.state = graph.get_root()
-        
+
     def notify(self):
         self.observer.update(self.state)
 
