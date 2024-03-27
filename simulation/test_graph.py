@@ -11,7 +11,7 @@ class TestGraph:
 
         graph.add_node(node)
 
-        assert graph == Graph([Node("node")])
+        assert graph == Graph(Node("node"))
 
     def test_add_edge(self):
         node_a = Node("A")
@@ -23,11 +23,11 @@ class TestGraph:
         graph.add_node(node_b)
         graph.add_edge(edge)
 
-        assert graph.edges[0] == Edge(node_a, node_b, 0.5)
+        assert graph.edges == {Edge(node_a, node_b, 0.5)}
 
     def test_create_from_list(self):
         construction_list = [('A', 'B', 0.9), ('A', 'C', 0.1), ('B', 'B', 0.5), ('B', 'C', 0.5)]
-        graph = Graph.from_list(construction_list)
+        graph = Graph.from_list('A', construction_list)
 
         node_a = Node('A')
         node_b = Node('B')
@@ -40,4 +40,5 @@ class TestGraph:
         edge_b_c = Edge(node_b, node_c, 0.5)
         edges = [edge_a_b, edge_a_c, edge_b_b, edge_b_c]
 
-        assert graph == Graph(nodes,edges)
+        assert graph == Graph(node_a, nodes, edges)
+

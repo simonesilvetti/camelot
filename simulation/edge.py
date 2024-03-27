@@ -21,6 +21,9 @@ class Edge:
     def get_probability(self) -> float:
         return self.probability
 
+    def __hash__(self):
+        return hash((self.father, self.son, self.probability))
+
 
 
 

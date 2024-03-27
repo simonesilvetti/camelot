@@ -7,6 +7,9 @@ class Node:
     def __eq__(self, other):
         return self.getName() == other.getName()
 
+    def __hash__(self):
+        return hash(self.name)
+
     def getName(self):
         return self.name
 

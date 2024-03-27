@@ -14,7 +14,7 @@ edge_3 = Edge(B, B, 0.5)
 edge_4 = Edge(B, C, 0.5)
 edge_5 = Edge(C, D, 1)
 
-graph = Graph([A, B, C, D], [edge_1, edge_2, edge_3, edge_4, edge_5])
+graph = Graph(A, [A, B, C, D], [edge_1, edge_2, edge_3, edge_4, edge_5])
 
 simulator = Simulator(graph)
 

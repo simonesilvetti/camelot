@@ -15,8 +15,7 @@ simulator = Simulator(graph)
 
 simulator.simulate(root)
 """
-root = Node('A')
-graph = Graph.from_list([('A', 'A', 5), ('A', 'T', 5)])
+graph = Graph.from_list('A', [('A', 'A', 5), ('A', 'T', 5)])
 
 simulator = Simulator(graph)
 simulator.simulate()
