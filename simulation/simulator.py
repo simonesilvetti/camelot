@@ -15,7 +15,7 @@ class Simulator:
         for i in range(1, len(x)):
             x[i] = x[i - 1] + edges[i].get_probability()
 
-        rand = random.uniform(0, 1)
+        rand = random.uniform(0, x[-1])
         for i in range(len(x)):
             if x[i] >= rand:
                 return edges[i].get_son()

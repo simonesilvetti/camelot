@@ -16,7 +16,7 @@ class TestGraph:
     def test_add_edge(self):
         node_a = Node("A")
         node_b = Node("B")
-        edge = Edge(node_a,node_b,0.5)
+        edge = Edge(node_a, node_b, 0.5)
         graph = Graph()
 
         graph.add_node(node_a)
@@ -38,6 +38,6 @@ class TestGraph:
         edge_a_c = Edge(node_a, node_c, 0.1)
         edge_b_b = Edge(node_b, node_b, 0.5)
         edge_b_c = Edge(node_b, node_c, 0.5)
-        edges=[edge_a_b, edge_a_c, edge_b_b, edge_b_c]
+        edges = [edge_a_b, edge_a_c, edge_b_b, edge_b_c]
 
-        assert graph.root == node_a and graph.nodes == nodes and graph.edges == edges
+        assert graph == Graph(nodes,edges)

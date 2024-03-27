@@ -3,18 +3,6 @@ from typing import List
 from simulation.edge import Edge
 from simulation.node import Node
 
-
-# def checkProbabilities(nodes):
-#     for node in nodes:
-#         p = 0
-#         for edge in node.getOutGoingEdges():
-#             p += edge.get_probability()
-#         if p != 1:
-#             print(f"Incorrect probability assignments on node {node.getName()}")
-#             return False
-#     return True
-
-
 class Graph:
     def __init__(self, nodes: List[Node] = None, edges: List[Edge] = None):
         self.nodes = [] if nodes is None else nodes
@@ -36,6 +24,8 @@ class Graph:
 
     def add_node(self, node: Node):
         self.nodes.append(node)
+        if len(self.nodes) == 1:
+            self.root = node
 
     def add_edge(self, edge: Edge):
         self.edges.append(edge)
@@ -43,8 +33,8 @@ class Graph:
     def get_root(self):
         return self.root
 
-    def __eq__(self, __value: 'Graph'):
-        return self.nodes == __value.nodes and self.edges == __value.edges
+    def __eq__(self, other: 'Graph'):
+        return self.nodes == other.nodes and self.edges == other.edges and self.root == other.root
 
 
 

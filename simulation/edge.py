@@ -6,8 +6,8 @@ class Edge:
         self.father = father
         self.son = son
         self.probability = probability
-        if self.father.addOutgoingEdge(self):
-            son.addIncomingEdge(self)
+        self.father.addOutgoingEdge(self)
+        self.son.addIncomingEdge(self)
 
     def __eq__(self, other):
         return self.get_father() == other.get_father() and self.get_son() == other.get_son() and self.get_probability() == other.get_probability()

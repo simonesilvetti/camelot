@@ -3,7 +3,6 @@ class Node:
         self.name = name
         self.incomingEdges = []
         self.outgoingEdges = []
-        self.outgoingProbabilities = 0
 
     def __eq__(self, other):
         return self.getName() == other.getName()
@@ -15,13 +14,7 @@ class Node:
         self.incomingEdges.append(edge)
 
     def addOutgoingEdge(self, edge):
-        probability = edge.get_probability()
-        if self.outgoingProbabilities + probability <= 1:
-            self.outgoingEdges.append(edge)
-            self.outgoingProbabilities += probability
-            return True
-
-        return False
+        self.outgoingEdges.append(edge)
 
     def getOutGoingEdges(self):
         return self.outgoingEdges
