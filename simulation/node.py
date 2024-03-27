@@ -18,7 +18,7 @@ class Node:
         return not self.outgoingEdges
 
     def __eq__(self, other):
-        return self.get_name() == other.get_name()
+        return self.get_name() == other.get_name() and self.get_mean_time() == other.get_mean_time()
 
     def __hash__(self):
         return hash(self.name)
