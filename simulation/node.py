@@ -5,12 +5,12 @@ class Node:
         self.outgoingEdges = []
 
     def __eq__(self, other):
-        return self.getName() == other.getName()
+        return self.get_name() == other.get_name()
 
     def __hash__(self):
         return hash(self.name)
 
-    def getName(self):
+    def get_name(self):
         return self.name
 
     def addIncomingEdge(self, edge):
