@@ -7,6 +7,9 @@ class Edge:
         self.son = son
         self.probability = probability
 
+    def __eq__(self, other):
+        return self.get_father() == other.get_father() and self.get_son() == other.get_son() and self.get_probability() == other.get_probability()
+
     def get_father(self) -> Node:
         return self.father
 
@@ -16,7 +19,6 @@ class Edge:
     def get_probability(self) -> float:
         return self.probability
 
-    def __eq__(self, __value):
-        return super().__eq__(__value)
+
 
 
