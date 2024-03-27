@@ -20,8 +20,8 @@ class Simulator:
             if x[i] >= rand:
                 return edges[i].get_son()
 
-    def simulate(self, start):
-        state = start
+    def simulate(self):
+        state = self.graph.get_root()
         print(state.getName())
         while not state.isTerminal():
             state = self.step(state)

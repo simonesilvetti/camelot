@@ -1,26 +1,21 @@
+from simulation.edge import Edge
 from simulation.graph import Graph
 from simulation.node import Node
 from simulation.simulator import Simulator
-
-graph = Graph()
 
 A = Node('A')
 B = Node('B')
 C = Node('C')
 D = Node('D')
 
-graph.add_node(A)
-graph.add_node(B)
-graph.add_node(C)
-graph.add_node(D)
+edge_1 = Edge(A, A, 0.5)
+edge_2 = Edge(A, B, 0.5)
+edge_3 = Edge(B, B, 0.5)
+edge_4 = Edge(B, C, 0.5)
+edge_5 = Edge(C, D, 1)
 
-graph.add_edge(A, A, 0.5)
-graph.add_edge(A, B, 0.5)
-graph.add_edge(B, B, 0.5)
-graph.add_edge(B, C, 0.5)
-graph.add_edge(C, D, 1)
+graph = Graph([A, B, C, D], [edge_1, edge_2, edge_3, edge_4, edge_5])
 
 simulator = Simulator(graph)
 
-simulator.simulate(A)
-
+simulator.simulate()
