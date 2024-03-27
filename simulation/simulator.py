@@ -16,7 +16,7 @@ class Simulator:
         self.observer.update(self.state)
 
     def step(self):
-        edges = self.state.getOutGoingEdges()
+        edges = list(self.state.getOutGoingEdges())
         x = [0] * len(edges)
         x[0] = edges[0].get_probability()
         for i in range(1, len(x)):

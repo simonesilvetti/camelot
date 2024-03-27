@@ -1,8 +1,8 @@
 class Node:
-    def __init__(self, name : str):
+    def __init__(self, name: str):
         self.name = name
-        self.incomingEdges = []
-        self.outgoingEdges = []
+        self.incomingEdges = set()
+        self.outgoingEdges = set()
 
     def __eq__(self, other):
         return self.get_name() == other.get_name()
@@ -14,10 +14,10 @@ class Node:
         return self.name
 
     def addIncomingEdge(self, edge):
-        self.incomingEdges.append(edge)
+        self.incomingEdges.add(edge)
 
     def addOutgoingEdge(self, edge):
-        self.outgoingEdges.append(edge)
+        self.outgoingEdges.add(edge)
 
     def getOutGoingEdges(self):
         return self.outgoingEdges
