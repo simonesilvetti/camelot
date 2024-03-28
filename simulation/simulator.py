@@ -30,11 +30,12 @@ class Simulator:
         rand = random.uniform(0, x[-1])
         for i in range(len(x)):
             if x[i] >= rand:
-                return edges[i].get_son()
+                self.node = edges[i].get_son()
+                return
 
     def simulate(self):
         self.notify()
         while not self.node.isTerminal():
-            self.node = self.step()
+            self.step()
             self.notify()
         print("simulation ended")
