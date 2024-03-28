@@ -21,13 +21,16 @@ class Node:
         return self.name == other.get_name() and self.mean_time == other.get_mean_time()
 
     def __hash__(self):
-        return hash((self.name,self.mean_time))
+        return hash((self.name, self.mean_time))
 
     def __repr__(self):
         return self.name
 
     def get_mean_time(self):
         return self.mean_time
+
+    def set_mean_time(self, mean_time):
+        self.mean_time = mean_time
 
     def addIncomingEdge(self, edge):
         self.incomingEdges.add(edge)
