@@ -5,16 +5,23 @@ from simulation.observer import Observer
 
 
 class Simulator:
-    observer = Observer()
 
     def __init__(self, graph: Graph):
-        self.state = graph.get_root()
+        self.node = graph.get_root()
+        self.observers = []
 
     def notify(self):
-        self.observer.update(self.state)
+        for observer in self.observers:
+            observer.update(self)
+
+    def add_observer(self,observer):
+        self.observers.append(observer)
+
+    def get_node(self):
+        return self.node
 
     def step(self):
-        edges = list(self.state.getOutGoingEdges())
+        edges = list(self.node.getOutGoingEdges())
         x = [0] * len(edges)
         x[0] = edges[0].get_probability()
         for i in range(1, len(x)):
@@ -27,7 +34,7 @@ class Simulator:
 
     def simulate(self):
         self.notify()
-        while not self.state.isTerminal():
-            self.state = self.step()
+        while not self.node.isTerminal():
+            self.node = self.step()
             self.notify()
         print("simulation ended")

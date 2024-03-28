@@ -1,4 +1,5 @@
 from simulation.graph import Graph
+from simulation.observer import Observer
 from simulation.simulator import Simulator
 
 """"
@@ -17,4 +18,6 @@ simulator.simulate(root)
 graph = Graph.from_list('A', [('A', 'A', 5), ('A', 'T', 1)])
 
 simulator = Simulator(graph)
+simulator.add_observer(Observer())
+
 simulator.simulate()
