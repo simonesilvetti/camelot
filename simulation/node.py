@@ -21,7 +21,7 @@ class Node:
         return self.get_name() == other.get_name() and self.get_mean_time() == other.get_mean_time()
 
     def __hash__(self):
-        return hash(self.name)
+        return hash((self.name,self.mean_time))
 
     def __repr__(self):
         return self.name
