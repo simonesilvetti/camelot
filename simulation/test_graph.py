@@ -30,4 +30,4 @@ class TestGraph:
         edge_b_c = Edge(node_b, node_c, 0.5)
         edges = [edge_a_b, edge_a_c, edge_b_b, edge_b_c]
 
-        assert graph == Graph(node_a, nodes, edges)
+        assert graph == Graph(node_a, edges)
