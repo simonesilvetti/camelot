@@ -1,7 +1,6 @@
 import random
 
 from simulation.graph import Graph
-from simulation.observer import Observer
 
 
 class Simulator:
@@ -14,7 +13,7 @@ class Simulator:
         for observer in self.observers:
             observer.update(self)
 
-    def add_observer(self,observer):
+    def add_observer(self, observer):
         self.observers.append(observer)
 
     def get_node(self):
@@ -30,11 +29,12 @@ class Simulator:
         rand = random.uniform(0, x[-1])
         for i in range(len(x)):
             if x[i] >= rand:
-                return edges[i].get_son()
+                self.node = edges[i].get_son()
+                return
 
     def simulate(self):
         self.notify()
         while not self.node.isTerminal():
-            self.node = self.step()
+            self.step()
             self.notify()
         print("simulation ended")
