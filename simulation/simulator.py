@@ -8,7 +8,6 @@ from simulation.node import Node
 
 
 class Simulator:
-    observer = Observer()
 
     def __init__(self, graph: Graph, time: datetime = datetime.now()):
         self.node = graph.get_root()

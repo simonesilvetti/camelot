@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 
 from simulation.edge import Edge
 from simulation.node import Node
@@ -10,18 +10,14 @@ class Graph:
         self.edges = set() if edges is None else set(edges)
 
     @classmethod
-    def from_list(cls, root: str, edge_list: (str, str, int, int)):
-    def from_list(cls, root: str, edge_content_list: List[Tuple[str, str, int]]):
+    def from_list(cls, root: str, edge_content_list: List[Tuple[str, str, float, float]]):
         dictionary_of_nodes = {root: Node(root)}
         edges = []
         for edge_content in edge_content_list:
             for i in range(2):
-                if x[i] not in dictionary_of_nodes:
-                    dictionary_of_nodes[x[i]] = Node(x[i])
-            edge = Edge(dictionary_of_nodes[x[0]], dictionary_of_nodes[x[1]], x[2], x[3])
                 if edge_content[i] not in dictionary_of_nodes:
                     dictionary_of_nodes[edge_content[i]] = Node(edge_content[i])
-            edge = Edge(dictionary_of_nodes[edge_content[0]], dictionary_of_nodes[edge_content[1]], edge_content[2])
+            edge = Edge(dictionary_of_nodes[edge_content[0]], dictionary_of_nodes[edge_content[1]], edge_content[2], edge_content[3])
             edges.append(edge)
         return cls(dictionary_of_nodes[root], edges)
 

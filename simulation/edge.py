@@ -5,8 +5,8 @@ class Edge:
     def __init__(self, father: Node, son: Node, q=1, m=0):
         self.father = father
         self.son = son
-        self.m = m
         self.q = q
+        self.m = m
         self.father.addOutgoingEdge(self)
         self.son.addIncomingEdge(self)
 
