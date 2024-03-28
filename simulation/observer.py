@@ -9,14 +9,13 @@ class FileObserver:
             writer = csv.writer(csvfile)
             writer.writerow(["Activity", "Time"])
 
-    def update(self, node, time):
-        node = node.get_name()
+    def update(self, node_name, node_data):
         with open(self.csv_name, 'a', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow([node, time])
+            writer.writerow([node_name, node_data])
 
 
 class PrintObserver:
 
-    def update(self, node, time):
-        print(f"Node {node} at time {time}")
+    def update(self, node_name, node_data):
+        print(f"Node {node_name} with data {node_data}")

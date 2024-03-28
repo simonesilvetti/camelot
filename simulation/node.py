@@ -1,45 +1,54 @@
+import numpy as np
+
+
+class Generator:
+    def generate(self):
+        pass
+
+
+class RandomTimeGenerator(Generator):
+
+    def __init__(self, mean):
+        self.mean = mean
+
+    def generate(self):
+        return abs(np.random.normal(loc=self.mean))
+
+    def __hash__(self):
+        return hash(self.mean)
+
+
+class NoneGenerator(Generator):
+    def generate(self):
+        return
+
+
 class Node:
-    def __init__(self, name: str, mean_time: float = 1.0):
+    def __init__(self, name: str, generator: Generator = NoneGenerator()):
         self.name = name
-        self.mean_time = mean_time
-        self.incomingEdges = set()
-        self.outgoingEdges = set()
+        self.generator = generator
+        self.outgoing_edges = set()
 
     def get_name(self):
         return self.name
 
     def add_outgoing_edge(self, edge):
-        self.outgoingEdges.add(edge)
+        self.outgoing_edges.add(edge)
 
     def get_outgoing_edges(self):
-        return self.outgoingEdges
+        return self.outgoing_edges
 
     def is_terminal(self):
-        return not self.outgoingEdges
+        return not self.outgoing_edges
+
+    def generate(self):
+        return self.generator.generate()
 
     def __eq__(self, other):
-        return self.name == other.get_name() and self.mean_time == other.get_mean_time()
+        return self.name == other.get_name() and self.generator == other.generator
 
     def __hash__(self):
-        return hash((self.name, self.mean_time))
+        return hash((self.name, self.generator))
 
     def __repr__(self):
         return self.name
-
-    def get_mean_time(self):
-        return self.mean_time
-
-    def set_mean_time(self, mean_time):
-        self.mean_time = mean_time
-
-    def addIncomingEdge(self, edge):
-        self.incomingEdges.add(edge)
-
-    def addOutgoingEdge(self, edge):
-        self.outgoingEdges.add(edge)
-
-    def getOutGoingEdges(self):
-        return self.outgoingEdges
-
-    def isTerminal(self):
-        return self.outgoingEdges == set()

@@ -1,4 +1,6 @@
+from simulation.edge import LinearScore
 from simulation.graph import Graph
+from simulation.node import Node, RandomTimeGenerator
 from simulation.observer import PrintObserver, FileObserver
 from simulation.simulator import Simulator
 
@@ -20,7 +22,10 @@ simulator = Simulator(graph)
 
 simulator.simulate(root)
 """
-graph = Graph.from_list('A', [('A', 'A', 5, 2), ('A', 'T', 0, 6)])
+
+a = Node("A", RandomTimeGenerator(2))
+t = Node("T", RandomTimeGenerator(2))
+graph = Graph.from_list(a, [(a, a, LinearScore(30, 5)), (a, t, LinearScore(0, 6))])
 
 simulator = Simulator(graph)
 simulator.add_observer(FileObserver('output/simple.csv'))
