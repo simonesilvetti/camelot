@@ -1,6 +1,7 @@
 import random
 
 from simulation.graph import Graph
+from simulation.node import Node
 
 
 class Simulator:
@@ -9,9 +10,9 @@ class Simulator:
         self.node = graph.get_root()
         self.observers = []
 
-    def notify(self):
+    def notify(self, node: Node):
         for observer in self.observers:
-            observer.update(self)
+            observer.update(node)
 
     def add_observer(self, observer):
         self.observers.append(observer)
@@ -20,7 +21,7 @@ class Simulator:
         return self.node
 
     def step(self):
-        edges = list(self.node.getOutGoingEdges())
+        edges = list(self.node.get_outgoing_edges())
         x = [0] * len(edges)
         x[0] = edges[0].get_probability()
         for i in range(1, len(x)):
@@ -33,8 +34,7 @@ class Simulator:
                 return
 
     def simulate(self):
-        self.notify()
-        while not self.node.isTerminal():
+        self.notify(self.node)
+        while not self.node.is_terminal():
             self.step()
-            self.notify()
-        print("simulation ended")
+            self.notify(self.node)

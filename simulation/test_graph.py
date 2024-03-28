@@ -5,22 +5,12 @@ from simulation.node import Node
 
 class TestGraph:
 
-    def test_add_node(self):
-        node = Node("node")
-        graph = Graph()
-
-        graph.add_node(node)
-
-        assert graph == Graph(Node("node"))
-
     def test_add_edge(self):
         node_a = Node("A")
         node_b = Node("B")
         edge = Edge(node_a, node_b, 0.5)
         graph = Graph()
 
-        graph.add_node(node_a)
-        graph.add_node(node_b)
         graph.add_edge(edge)
 
         assert graph.edges == {Edge(node_a, node_b, 0.5)}
@@ -41,4 +31,3 @@ class TestGraph:
         edges = [edge_a_b, edge_a_c, edge_b_b, edge_b_c]
 
         assert graph == Graph(node_a, nodes, edges)
-
