@@ -11,7 +11,7 @@ class Edge:
         self.son.addIncomingEdge(self)
 
     def __eq__(self, other):
-        return self.get_father() == other.get_father() and self.get_son() == other.get_son() and self.get_probability() == other.get_probability()
+        return self.father == other.get_father() and self.son == other.get_son() and self.get_probability() == other.get_probability()
 
     def get_father(self) -> Node:
         return self.father
