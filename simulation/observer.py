@@ -10,7 +10,8 @@ class Observer:
             writer.writerow(["Activity"])
 
     def update(self, state):
-        print(state.get_node().get_name())
+        node = state.get_node().get_name()
+        print(node)
         with open(self.csv_name, 'a', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow([state.get_node().get_name()])
+            writer.writerow([node])
