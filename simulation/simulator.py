@@ -30,9 +30,9 @@ class Simulator:
         self.time += timedelta(hours=time_elapsed)
         edges = list(self.node.get_outgoing_edges())
         x = [0] * len(edges)
-        x[0] = edges[0].get_probability()
+        x[0] = edges[0].get_probability(time_elapsed)
         for i in range(1, len(x)):
-            x[i] = x[i - 1] + edges[i].get_probability()
+            x[i] = x[i - 1] + edges[i].get_probability(time_elapsed)
 
         rand = random.uniform(0, x[-1])
         for i in range(len(x)):

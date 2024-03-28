@@ -7,6 +7,11 @@ root = Node('A')
 terminal = Node('T')
 nodes = [root, terminal]
 
+
+
+
+
+
 edges = [Edge(root, root, 0.5), Edge(root, terminal, 0.5)]
 
 graph = Graph(nodes, edges)
@@ -15,7 +20,7 @@ simulator = Simulator(graph)
 
 simulator.simulate(root)
 """
-graph = Graph.from_list('A', [('A', 'A', 5), ('A', 'T', 5)])
+graph = Graph.from_list('A', [('A', 'A', 5, 2), ('A', 'T', 0, 6)])
 
 simulator = Simulator(graph)
 simulator.add_observer(FileObserver('output/simple.csv'))

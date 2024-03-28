@@ -2,11 +2,13 @@ from simulation.node import Node
 
 
 class Edge:
-    def __init__(self, father: Node, son: Node, probability: float):
+    def __init__(self, father: Node, son: Node, q=1, m=0):
         self.father = father
         self.son = son
-        self.probability = probability
-        self.father.add_outgoing_edge(self)
+        self.m = m
+        self.q = q
+        self.father.addOutgoingEdge(self)
+        self.son.addIncomingEdge(self)
 
     def __eq__(self, other):
         return self.get_father() == other.get_father() and self.get_son() == other.get_son() and self.get_probability() == other.get_probability()
@@ -17,11 +19,12 @@ class Edge:
     def get_son(self) -> Node:
         return self.son
 
-    def get_probability(self) -> float:
-        return self.probability
+
+    def get_probability(self, time=0) -> float:
+        return self.m*time + self.q
 
     def __hash__(self):
-        return hash((self.father, self.son, self.probability))
+        return hash((self.father, self.son, self.m,self.q))
 
 
 
