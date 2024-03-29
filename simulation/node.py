@@ -18,6 +18,15 @@ class RandomTimeGenerator(Generator):
         return hash(self.mean)
 
 
+class RandomExamGenerator(Generator):
+
+    def generate(self):
+        return 1, abs(np.random.normal()), abs(np.random.normal()), abs(np.random.normal())
+
+    def __hash__(self):
+        return 1
+
+
 class NoneGenerator(Generator):
     def generate(self):
         return

@@ -21,6 +21,22 @@ class LinearScore(Score):
         return hash((self.m, self.q))
 
 
+class ExamScore(Score):
+    def __init__(self, x: float, y: float, z: float):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def score(self, data) -> float:
+        return self.x * data[1] + self.y * data[2] + self.z * data[3]
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y and self.z == other.z
+
+    def __hash__(self):
+        return hash((self.x, self.y, self.z))
+
+
 class ConstantScore(Score):
 
     def score(self, data) -> float:
