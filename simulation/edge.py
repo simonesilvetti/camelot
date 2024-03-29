@@ -1,4 +1,5 @@
 from simulation.node import Node
+import numpy as np
 
 
 class Score:
@@ -21,6 +22,7 @@ class LinearScore(Score):
         return hash((self.m, self.q))
 
 
+"""""
 class ExamScore(Score):
     def __init__(self, x: float, y: float, z: float):
         self.x = x
@@ -35,6 +37,36 @@ class ExamScore(Score):
 
     def __hash__(self):
         return hash((self.x, self.y, self.z))
+"""
+
+
+class HigherThresholdScore(Score):
+    def __init__(self, threshold: float, index:int):
+        self.index = index
+        self.threshold = threshold
+
+    def score(self, data) -> float:
+        return np.clip(data[self.index] - self.threshold, 0, np.inf)
+
+    def __eq__(self, other):
+        return self.threshold == other.threshold
+
+    def __hash__(self):
+        return hash(self.threshold)
+
+
+class LowerThresholdScore(Score):
+    def __init__(self, threshold: float):
+        self.threshold = threshold
+
+    def score(self, data) -> float:
+        return np.clip(self.threshold - data, 0, np.inf)
+
+    def __eq__(self, other):
+        return self.threshold == other.threshold
+
+    def __hash__(self):
+        return hash(self.threshold)
 
 
 class ConstantScore(Score):

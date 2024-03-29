@@ -18,10 +18,56 @@ class RandomTimeGenerator(Generator):
         return hash(self.mean)
 
 
+"""
 class RandomExamGenerator(Generator):
 
     def generate(self):
         return 1, abs(np.random.normal()), abs(np.random.normal()), abs(np.random.normal())
+
+    def __hash__(self):
+        return 1
+"""
+
+
+class Human(Generator):
+
+    def __init__(self, hemo, sodium, pot):
+        self.hemo = hemo
+        self.sodium = sodium
+        self.pot = pot
+
+    def generate(self):
+        return self.hemo, self.sodium, self.pot
+
+    def update(self, node_name, node_data):
+        match node_name:
+            case "hemo_int":
+                self.hemo += 0.5 * node_data
+            case "hemo_inib":
+                self.hemo -= 0.5 * node_data
+            case "sodium_int":
+                self.sodium += 0.5 * node_data
+            case "sodium_inib":
+                self.sodium -= 0.5 * node_data
+            case "pot_int":
+                self.pot += 0.5 * node_data
+            case "pot_inib":
+                self.pot -= 0.5 * node_data
+
+
+class CorrectorGenerator(Generator):
+    def generate(self):
+        return self.name, self.value
+
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
+
+
+class RandomExamGenerator(Generator):
+
+    def generate(self):
+        return 1, abs(np.random.normal(14.9)), abs(np.random.normal(140)), abs(np.random.normal(4.5))
 
     def __hash__(self):
         return 1
