@@ -5,7 +5,7 @@ from examples.human_integrators.human_integrators import Human, DrugGenerator, E
     RecoveredScore, NonResponsiveScore, Terminal
 from simulation.edge import ConstantScore
 from simulation.graph import Graph
-from simulation.node import Node, NoneUpdater, NoneGenerator, TimedGenerator
+from simulation.node import Node, NoneUpdater, TimedGenerator
 from simulation.observer import DataCollector, PrintObserver
 from simulation.simulator import Simulator
 
