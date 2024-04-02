@@ -22,9 +22,10 @@ class Simulator:
     def get_node(self):
         return self.node
 
-    def __step(self):
-        data = self.node.generate()
-        edges = list(self.node.get_outgoing_edges())
+    def __step(self, node, data):
+        # node.update()
+        # data = self.node.generate()
+        edges = list(node.get_outgoing_edges())
         x = [0] * len(edges)
         x[0] = edges[0].get_score(data)
         for i in range(1, len(x)):
@@ -33,12 +34,14 @@ class Simulator:
         rand = random.uniform(0, x[-1])
         for i in range(len(x)):
             if x[i] >= rand:
-                self.node = edges[i].get_son()
-                return data
+                return edges[i].get_son()
 
     def simulate(self):
-        data = self.node.generate()
-        self.__notify(self.node.get_name(), data)
-        while not self.node.is_terminal():
-            data = self.__step()
-            self.__notify(self.node, data)
+        node = self.node
+        data = node.generate()
+        self.__notify(node.get_name(), data)
+        while not node.is_terminal():
+            node = self.__step(node, data)
+            node.update()
+            data = node.generate()
+            self.__notify(node, data)

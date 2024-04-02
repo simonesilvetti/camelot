@@ -27,12 +27,12 @@ class PatientObserver:
         self.csv_name = csv_name
         with open(self.csv_name, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow(["Activity", "Time", "Hemoglobin", "Sodium", "Potassium"])
+            writer.writerow(["Name", "Activity", "Hemoglobin", "Sodium", "Potassium", "Dose"])
 
     def update(self, node_name, node_data):
         with open(self.csv_name, 'a', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            if isinstance(node_data, float):
-                writer.writerow([node_name, node_data])
+            if isinstance(node_data, str):
+                writer.writerow([node_data, node_name])
             else:
-                writer.writerow([node_name, *node_data])
+                writer.writerow([node_data[0], node_name, *node_data[1:-1]])
