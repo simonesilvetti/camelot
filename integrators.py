@@ -1,9 +1,11 @@
-from simulation.edge import LowerThresholdScore, HigherThresholdScore, ConstantScore, RecoveredScore, NonResponsiveScore
+from simulation.edge import ConstantScore
 from simulation.graph import Graph
-from simulation.node import Node, Human, Exam, NoneUpdater, HemoIntegrator, NoneGenerator, HemoInibitor, \
-    SodiumIntegrator, SodiumInibitor, PotIntegrator, PotInibitor
+from simulation.node import Node, NoneUpdater, NoneGenerator
+from examples.human_integrators.human_integrators import Human, Exam, HemoIntegrator, HemoInibitor, SodiumIntegrator, \
+    SodiumInibitor, PotIntegrator, PotInibitor, HigherThresholdScore, LowerThresholdScore, RecoveredScore, \
+    NonResponsiveScore, PatientObserver
 
-from simulation.observer import PatientObserver, PrintObserver
+from simulation.observer import PrintObserver
 from simulation.simulator import Simulator
 
 human = Human("Persona")

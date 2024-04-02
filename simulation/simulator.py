@@ -19,9 +19,6 @@ class Simulator:
     def add_observer(self, observer):
         self.observers.append(observer)
 
-    def get_node(self):
-        return self.node
-
     def __step(self, node, data):
         # node.update()
         # data = self.node.generate()

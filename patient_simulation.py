@@ -1,7 +1,7 @@
-from simulation.edge import HigherThresholdScore, ConstantScore
+from simulation.edge import ConstantScore
+from examples.human_integrators.human_integrators import HigherThresholdScore, PatientObserver
 from simulation.graph import Graph
 from simulation.node import Node, RandomExamGenerator, RandomTimeGenerator
-from simulation.observer import PatientObserver
 from simulation.simulator import Simulator
 
 exam = Node("Exams", RandomExamGenerator())

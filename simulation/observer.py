@@ -21,18 +21,18 @@ class PrintObserver:
         print(f"Node {node_name} with data {node_data}")
 
 
-class PatientObserver:
 
-    def __init__(self, csv_name):
-        self.csv_name = csv_name
-        with open(self.csv_name, 'w', newline='') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(["Name", "Activity", "Hemoglobin", "Sodium", "Potassium", "Dose"])
+class DataCollector:
+
+    def __init__(self, column_names):
+        self.column_names = column_names
+        self.data = []
 
     def update(self, node_name, node_data):
-        with open(self.csv_name, 'a', newline='') as csvfile:
+        self.data.append([node_name, *node_data])
+
+    def to_csv(self, csv_name):
+        with open(csv_name, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            if isinstance(node_data, str):
-                writer.writerow([node_data, node_name])
-            else:
-                writer.writerow([node_data[0], node_name, *node_data[1:-1]])
+            writer.writerow(self.column_names)
+            writer.writerows(self.data)
