@@ -86,6 +86,12 @@ class Exam(Generator):
     def generate(self):
         return self.human.get_name(), self.human.get_hemo(), self.human.get_sodium(), self.human.get_pot(), None, self.human.is_responsive()
 
+class Terminal(Generator):
+    def __init__(self, human):
+        self.human = human
+
+    def generate(self):
+        return self.human.get_name(), None, None, None, None, None
 
 class HemoIntegrator(Updater):
     def __init__(self, human: Human):
@@ -187,7 +193,7 @@ class RecoveredScore(Score):
 
 class NonResponsiveScore(Score):
     def score(self, data):
-        if data[-1]:
+        if data[-2]:
             return 0
         else:
             return np.inf

@@ -20,8 +20,6 @@ class Simulator:
         self.observers.append(observer)
 
     def __step(self, node, data):
-        # node.update()
-        # data = self.node.generate()
         edges = list(node.get_outgoing_edges())
         x = [0] * len(edges)
         x[0] = edges[0].get_score(data)
@@ -36,7 +34,7 @@ class Simulator:
     def simulate(self):
         node = self.node
         data = node.generate()
-        self.__notify(node.get_name(), data)
+        self.__notify(node, data)
         while not node.is_terminal():
             node = self.__step(node, data)
             node.update()

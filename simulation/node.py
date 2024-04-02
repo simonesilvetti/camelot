@@ -32,7 +32,7 @@ class TimedGenerator(Generator):
         self.generator = generator
 
     def generate(self):
-        return [self.distribution(), *self.generator.generate()]
+        return [*self.generator.generate(), self.distribution()]
 
 
 class Updater:
