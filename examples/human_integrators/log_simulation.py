@@ -12,7 +12,7 @@ from simulation.simulator import Simulator
 data_collector = DataCollector(
     ["Activity", "Case ID", "Hemoglobin", "Sodium", "Potassium", "Dose", "Responsive", "Time"])
 observer=PrintObserver()
-for i in range(1000):
+for i in range(10000):
     human = Human(str(i))
 
     exam = Node("Exam", TimedGenerator(Exam(human), lambda: np.abs(np.random.normal(loc=1))), NoneUpdater())
