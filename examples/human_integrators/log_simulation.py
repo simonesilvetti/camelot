@@ -12,14 +12,14 @@ from simulation.simulator import Simulator
 data_collector = DataCollector(
     ["Activity", "Case ID", "Hemoglobin", "Sodium", "Potassium", "Dose", "Responsive", "Time"])
 observer=PrintObserver()
-for i in range(100):
+for i in range(1000):
     human = Human(str(i))
 
     exam = Node("Exam", TimedGenerator(Exam(human), lambda: np.abs(np.random.normal(loc=1))), NoneUpdater())
 
     hemo_int = Node("hemo_int", TimedGenerator(DrugGenerator(human), lambda: np.abs(np.random.normal(loc=48))),
                     HemoIntegrator(human))
-    hemo_inib = Node("hemo_nib", TimedGenerator(DrugGenerator(human), lambda: np.abs(np.random.normal(loc=48))),
+    hemo_inib = Node("hemo_inib", TimedGenerator(DrugGenerator(human), lambda: np.abs(np.random.normal(loc=48))),
                      HemoInibitor(human))
     sodium_int = Node("sodium_int", TimedGenerator(DrugGenerator(human), lambda: np.abs(np.random.normal(loc=48))),
                       SodiumIntegrator(human))
@@ -50,4 +50,4 @@ for i in range(100):
     simulator.add_observer(data_collector)
 
     simulator.simulate()
-data_collector.to_csv('output/integrators_log.csv')
+data_collector.to_csv('examples/human_integrators/output/integrators_log.csv')
